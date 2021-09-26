@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DotNetDesignPatternDemos.Creational.Builder;
+using StepwiseBuilder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -89,6 +91,47 @@ namespace DesignPatterns.Creational
 
             door2.GetDescription();  // Output: I am an iron door
             expert2.GetDescription(); // Output: I can only fit iron doors
+        }
+
+        internal static void TestBuilderFacets()
+        {
+            var pb = new DotNetDesignPatternDemos.Creational.BuilderFacets.PersonBuilder();
+            DotNetDesignPatternDemos.Creational.BuilderFacets.Person person = pb
+              .Lives
+                .At("123 London Road")
+                .In("London")
+                .WithPostcode("SW12BC")
+              .Works
+                .At("Fabrikam")
+                .AsA("Engineer")
+                .Earning(123000);
+
+            Console.WriteLine(person);
+        }
+
+        internal static void TestBuilderInheritance()
+        {
+            var me = Person.New
+        .Called("Dmitri")
+        .WorksAsA("Quant")
+        .Born(DateTime.UtcNow)
+        .Build();
+            Console.WriteLine(me);
+        }
+
+        internal static void TestFunctionalBuilder()
+        {
+            var pb = new DotNetDesignPatternDemos.Creational.Builder.PersonBuilder();
+            var person = pb.Called("Dmitri").WorksAsA("Programmer").Build();
+        }
+
+        internal static void TestStepwiseBuilder()
+        {
+            var car = CarBuilder.Create()
+                                .OfType(CarType.Crossover)
+                                .WithWheels(18)
+                                .Build();
+            Console.WriteLine(car);
         }
     }
 }
