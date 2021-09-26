@@ -1,5 +1,7 @@
 ﻿using DesignPatterns.Creational;
 using System;
+using System.Collections.Generic;
+using System.Text;
 using static DesignPatterns.Creational.ConcreteBuilder;
 
 namespace DesignPatterns
@@ -11,7 +13,10 @@ namespace DesignPatterns
             //TestSingleton();
             //TestPrototype();
             //CreationalService.TestBuilder();
-            CreationalService.TestFactory();
+            //CreationalService.TestFactory();
+
         }
     }
+
+
 }

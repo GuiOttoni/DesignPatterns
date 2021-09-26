@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static DesignPatterns.Creational.AbstractFactory;
+using static DesignPatterns.Creational.BuilderCodeExercise;
 using static DesignPatterns.Creational.ConcreteBuilder;
 
 namespace DesignPatterns.Creational
@@ -132,6 +133,13 @@ namespace DesignPatterns.Creational
                                 .WithWheels(18)
                                 .Build();
             Console.WriteLine(car);
+        }
+
+        internal static void TestBuilderCodeExercise()
+        {
+
+            var cb = new CodeBuilder("Person").AddField("Name", "string").AddField("Age", "int");
+            Console.WriteLine(cb.ToString());
         }
     }
 }
