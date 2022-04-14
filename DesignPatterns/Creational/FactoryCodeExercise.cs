@@ -1,57 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace DesignPatterns.Creational
+namespace DesignPatterns.Creational;
+
+public interface IPerson
 {
-    public interface IPerson
-    {
-        int Id { get; set; }
-        string Name { get; set; }
-    }
+    int Id { get; set; }
+    string Name { get; set; }
+}
 
-    public class Person : IPerson
+public class Person : IPerson
+{
+    private int _id;
+    private string _name;
+    public int Id
     {
-        private int _id;
-        private string _name;
-        public int Id
+        get { return _id; }
+        set
         {
-            get { return _id; }
-            set
-            {
-                _id = value;
-            }
-        }
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-
-            set
-            {
-                _name = value;
-            }
+            _id = value;
         }
     }
-
-    public abstract class Factory
+    public string Name
     {
-        public abstract IPerson CreatePerson(string Name);
-
-    }
-
-    public class PersonFactory : Factory
-    {
-        private int _personCounter = 0;
-        public override IPerson CreatePerson(string _name)
+        get
         {
-            var person = new Person() { Id = _personCounter, Name = _name };
-            _personCounter++;
-            return person;
+            return _name;
         }
+
+        set
+        {
+            _name = value;
+        }
+    }
+}
+
+public abstract class Factory
+{
+    public abstract IPerson CreatePerson(string Name);
+
+}
+
+public class PersonFactory : Factory
+{
+    private int _personCounter = 0;
+    public override IPerson CreatePerson(string _name)
+    {
+        var person = new Person() { Id = _personCounter, Name = _name };
+        _personCounter++;
+        return person;
     }
 }
